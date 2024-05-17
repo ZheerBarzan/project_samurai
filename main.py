@@ -16,12 +16,12 @@ Red = (255,0,0)
 #define fighter variables
 Samurai_size = 155
 Samurai_sacle =5
-Samurai_offset = [100,115]
+Samurai_offset = [100,102]
 Samurai_data = [Samurai_size,Samurai_sacle,Samurai_offset]
 
 ninja_size = 155
 ninja_sacle =5
-ninja_offset = [100,115]
+ninja_offset = [50,110]
 ninja_data = [ninja_size,ninja_sacle,ninja_offset]
 
 screen = pygame.display.set_mode((Screen_Width, Screen_Height))
@@ -75,7 +75,7 @@ while run:
     # move fighters
     fighter_1.move(Screen_Width, Screen_Height, screen, fighter_2)
 
-    #fighter_2.move(Screen_Width, Screen_Height, screen, fighter_1)
+    fighter_2.move(Screen_Width, Screen_Height, screen, fighter_1)
     # Draw the fighters
     fighter_1.draw(screen)
     fighter_2.draw(screen)

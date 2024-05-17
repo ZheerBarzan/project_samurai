@@ -11,7 +11,7 @@ class Fighter():
         self.action = 0 #0 = idle, 1 = run, 2 = jumping, 3 = attack1, 4 = attack2 , 5 = hit, 6 = death
         self.frame_index = 0
         self.image = self.animationlist[self.action][self.frame_index]
-        self.rect = pygame.Rect(x,y,40,60)
+        self.rect = pygame.Rect(x,y,40,100)
         self.vel_y =0
         self.jump = False
         self.attacking = False
@@ -77,8 +77,8 @@ class Fighter():
         if self.rect.top +dy < 0:
             dy = -self.rect.top
             self.vel_y = 0
-        if self.rect.bottom +dy > Screen_Height -130:
-            dy = Screen_Height - 130 - self.rect.bottom
+        if self.rect.bottom +dy > Screen_Height -155:
+            dy = Screen_Height - 155 - self.rect.bottom
             self.vel_y = 0
             self.jump = False
 
@@ -99,5 +99,6 @@ class Fighter():
             target.health -= 10
         pygame.draw.rect(surface,(0,255,0),attacking_rect)
     def draw(self,surface):
+        img = pygame.transform.flip(self.image,self.flip,False)
         pygame.draw.rect(surface,(255,0,0),self.rect)
-        surface.blit(self.image,(self.rect.x - (self.offset[0]*self.scale),self.rect.y - (self.offset[1]*self.scale)))
+        surface.blit(img,(self.rect.x - (self.offset[0]*self.scale),self.rect.y - (self.offset[1]*self.scale)))
