@@ -8,6 +8,11 @@ pygame.init()
 Screen_Width = 1500
 Screen_Height = 1000
 
+#define colors
+White = (255,255,255)
+Yellow = (255,255,0)
+Red = (255,0,0)
+
 screen = pygame.display.set_mode((Screen_Width, Screen_Height))
 pygame.display.set_caption("Samurai Showdown")
 
@@ -23,6 +28,15 @@ def draw_background():
     scaled_background = pygame.transform.scale(background, (Screen_Width, Screen_Height))
     screen.blit(scaled_background, (0, 0))
 
+#health bar
+def draw_health_bars(health,x,y):
+    ratio = health/100
+    #draw health bar
+    pygame.draw.rect(screen, White, (x-10, y-10, 520, 70))
+    pygame.draw.rect(screen, Red, (x, y, 500, 50))
+    pygame.draw.rect(screen, Yellow, (x, y, 500*ratio, 50))
+    pygame.draw.rect(screen, Yellow, (x, y, 500*ratio, 50))
+
 
 
 
@@ -35,6 +49,9 @@ while run:
     clock.tick(fps)
     #draw the background
     draw_background()
+    #draw health bars
+    draw_health_bars(fighter_1.health, 50, 100)
+    draw_health_bars(fighter_2.health, 950, 100)
     # move fighters
     fighter_1.move(Screen_Width, Screen_Height, screen, fighter_2)
     #fighter_2.move()
