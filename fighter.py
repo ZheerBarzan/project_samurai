@@ -1,13 +1,37 @@
 import pygame
 
 class Fighter():
-    def __init__(self,x,y):
+    def __init__(self,x,y,data,spritesheet,animation_list):
+        self.size = data[0]
+        self.scale = data[1]
+        self.offset = data[2]
+
+        self.flip = False
+        self.animationlist = self.load_images(spritesheet,animation_list)
+        self.action = 0 #0 = idle, 1 = run, 2 = jumping, 3 = attack1, 4 = attack2 , 5 = hit, 6 = death
+        self.frame_index = 0
+        self.image = self.animationlist[self.action][self.frame_index]
         self.rect = pygame.Rect(x,y,40,60)
         self.vel_y =0
         self.jump = False
         self.attacking = False
         self.attack_type = 0
         self.health = 100
+
+
+
+    def load_images(self,spritesheet,animation_steps):
+        animation_list = []
+        for y,animation in enumerate(animation_steps):
+
+            temp_img_list = []
+            for x in range(animation):
+                temp_img = spritesheet.subsurface(pygame.Rect(x*self.size,y*self.size,self.size,self.size))
+                pygame.transform.scale(temp_img,(self.size*self.scale,self.size*self.scale))
+                temp_img_list.append(pygame.transform.scale(temp_img,(self.size*self.scale,self.size*self.scale))
+)
+            animation_list.append(temp_img_list)
+        return animation_list
 
 
     def move(self, Screen_Width, Screen_Height, surface,target):
@@ -58,15 +82,22 @@ class Fighter():
             self.vel_y = 0
             self.jump = False
 
+        #ensure the fighter is facing the right direction
+        if target.rect.centerx > self.rect.centerx:
+            self.flip = False
+        else:
+            self.flip = True
+
         self.rect.x +=dx
         self.rect.y +=dy
 
     def attack(self,surface,target):
         self.attacking = True
-        attacking_rect = pygame.Rect(self.rect.centerx,self.rect.y,2*self.rect.width,self.rect.height)
+        attacking_rect = pygame.Rect(self.rect.centerx -(2 * self.rect.width* self.flip),self.rect.y,2*self.rect.width,self.rect.height)
 
         if attacking_rect.colliderect(target.rect):
             target.health -= 10
         pygame.draw.rect(surface,(0,255,0),attacking_rect)
     def draw(self,surface):
         pygame.draw.rect(surface,(255,0,0),self.rect)
+        surface.blit(self.image,(self.rect.x - (self.offset[0]*self.scale),self.rect.y - (self.offset[1]*self.scale)))
