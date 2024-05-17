@@ -1,4 +1,5 @@
 import pygame
+from fighter import Fighter
 
 # Initialize the game
 pygame.init()
@@ -18,10 +19,23 @@ def draw_background():
     scaled_background = pygame.transform.scale(background, (Screen_Width, Screen_Height))
     screen.blit(scaled_background, (0, 0))
 
+
+
+
+# create 2 instances of the Fighter class
+fighter_1 = Fighter(200, 770)
+fighter_2 = Fighter(1200, 770)
 # Set up the game loop
 run = True
 while run:
+    #draw the background
     draw_background()
+    # move fighters
+    fighter_1.move()
+    fighter_2.move()
+    # Draw the fighters
+    fighter_1.draw(screen)
+    fighter_2.draw(screen)
     # event handler
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
