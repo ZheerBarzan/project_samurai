@@ -14,10 +14,15 @@ Yellow = (255,255,0)
 Red = (255,0,0)
 
 #define fighter variables
-Samurai_size = 200
-Samurai_sacle =3
-Samurai_offset = [150,180]
+Samurai_size = 155
+Samurai_sacle =5
+Samurai_offset = [100,115]
 Samurai_data = [Samurai_size,Samurai_sacle,Samurai_offset]
+
+ninja_size = 155
+ninja_sacle =5
+ninja_offset = [100,115]
+ninja_data = [ninja_size,ninja_sacle,ninja_offset]
 
 screen = pygame.display.set_mode((Screen_Width, Screen_Height))
 pygame.display.set_caption("Samurai Showdown")
@@ -31,9 +36,12 @@ background = pygame.image.load('assets/images/background/background.png').conver
 
 #load the spritesheets
 samurai = pygame.image.load('assets/images/samuraiMack/samurai.png').convert_alpha()
+ninja = pygame.image.load('assets/images/kenji/ninja.png').convert_alpha()
 
 
-samurai_animation = [6,6,6,8,8,4,4,2,2]
+samurai_animation = [8,8,2,6,6,4,6]
+ninja_animation = [4,8,2,4,4,3,7]
+
 
 #function for drawing the background
 def draw_background():
@@ -54,7 +62,7 @@ def draw_health_bars(health,x,y):
 
 # create 2 instances of the Fighter class
 fighter_1 = Fighter(200, 770,Samurai_data,samurai,samurai_animation)
-fighter_2 = Fighter(1200, 770,Samurai_data,samurai,samurai_animation)
+fighter_2 = Fighter(1200, 770,ninja_data,ninja,ninja_animation)
 # Set up the game loop
 run = True
 while run:
@@ -66,7 +74,8 @@ while run:
     draw_health_bars(fighter_2.health, 950, 100)
     # move fighters
     fighter_1.move(Screen_Width, Screen_Height, screen, fighter_2)
-    #fighter_2.move()
+
+    #fighter_2.move(Screen_Width, Screen_Height, screen, fighter_1)
     # Draw the fighters
     fighter_1.draw(screen)
     fighter_2.draw(screen)
