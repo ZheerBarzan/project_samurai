@@ -11,6 +11,10 @@ Screen_Height = 1000
 screen = pygame.display.set_mode((Screen_Width, Screen_Height))
 pygame.display.set_caption("Samurai Showdown")
 
+#set frame rate
+clock = pygame.time.Clock()
+fps = 60
+
 #load background image
 background = pygame.image.load('assets/images/background/background.png').convert_alpha()
 
@@ -28,11 +32,12 @@ fighter_2 = Fighter(1200, 770)
 # Set up the game loop
 run = True
 while run:
+    clock.tick(fps)
     #draw the background
     draw_background()
     # move fighters
-    fighter_1.move()
-    fighter_2.move()
+    fighter_1.move(Screen_Width, Screen_Height)
+    #fighter_2.move()
     # Draw the fighters
     fighter_1.draw(screen)
     fighter_2.draw(screen)
