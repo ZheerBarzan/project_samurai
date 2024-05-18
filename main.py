@@ -1,7 +1,9 @@
 import pygame
+from pygame import mixer
 from fighter import Fighter
 
 # Initialize the game
+mixer.init()
 pygame.init()
 
 # Set up the screen
@@ -31,6 +33,17 @@ ninja_size = 200
 ninja_sacle =5
 ninja_offset = [85,85]
 ninja_data = [ninja_size,ninja_sacle,ninja_offset]
+
+#load music and sounds
+
+pygame.mixer.music.load('assets/audio/music.mp3')
+pygame.mixer.music.set_volume(0.5)
+pygame.mixer.music.play(-1,0.0,5000)
+katana = pygame.mixer.Sound('assets/audio/katana.wav')
+katana.set_volume(0.5)
+kunai = pygame.mixer.Sound('assets/audio/sword.wav')
+kunai.set_volume(0.5)
+
 
 screen = pygame.display.set_mode((Screen_Width, Screen_Height))
 pygame.display.set_caption("Samurai Showdown")
@@ -81,8 +94,8 @@ def draw_health_bars(health,x,y):
 
 
 # create 2 instances of the Fighter class
-fighter_1 = Fighter(1,200, 640,False,Samurai_data,samurai,samurai_animation)
-fighter_2 = Fighter(2,1200, 640,True,ninja_data,ninja,ninja_animation)
+fighter_1 = Fighter(1,200, 640,False,Samurai_data,samurai,samurai_animation,katana)
+fighter_2 = Fighter(2,1200, 640,True,ninja_data,ninja,ninja_animation,kunai)
 # Set up the game loop
 run = True
 while run:
@@ -128,8 +141,8 @@ while run:
     else:
         screen.blit(victory_image, (Screen_Width//2 - 200, 200))
         if pygame.time.get_ticks() - round_over_time > Round_over_cooldown:
-            fighter_1 = Fighter(1, 200, 640, False, Samurai_data, samurai, samurai_animation)
-            fighter_2 = Fighter(2, 1200, 640, True, ninja_data, ninja, ninja_animation)
+            fighter_1 = Fighter(1, 200, 640, False, Samurai_data, samurai, samurai_animation, katana)
+            fighter_2 = Fighter(2, 1200, 640, True, ninja_data, ninja, ninja_animation, kunai)
             round_over = False
             intro_count = 3
             last_count_update = pygame.time.get_ticks()

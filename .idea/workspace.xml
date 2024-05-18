@@ -5,10 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bed2e3b3-291e-497e-a72d-afa4220187e2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/fonts/PressStart2P-vaV7.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/background/victory.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/katana.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/music.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/sword.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/kenji/ninja.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/kenji/ninja.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/kenji/Attack1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/kenji/Attack2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/kenji/Death.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/kenji/Fall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/kenji/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/kenji/Jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/kenji/Run.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/kenji/Take hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Attack1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Attack2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Death.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Fall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Jump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Run.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Take Hit - white silhouette.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Take Hit.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/fighter.py" beforeDir="false" afterPath="$PROJECT_DIR$/fighter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -21,6 +39,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
@@ -36,21 +55,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.fighter.executor": "Run",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/zheer/PycharmProjects/samurai_showdown/assets/images/background"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.fighter.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/zheer/PycharmProjects/samurai_showdown/assets/images/background&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets/images/background" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/audio" />
       <recent name="$PROJECT_DIR$/assets/fonts" />
       <recent name="$PROJECT_DIR$/assets/images/kenji" />
       <recent name="$PROJECT_DIR$/assets/images/samuraiMack" />
