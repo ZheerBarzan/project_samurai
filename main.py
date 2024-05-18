@@ -14,12 +14,12 @@ Yellow = (255,255,0)
 Red = (255,0,0)
 
 #define fighter variables
-Samurai_size = 155
+Samurai_size = 200
 Samurai_sacle =5
-Samurai_offset = [100,102]
+Samurai_offset = [100,80]
 Samurai_data = [Samurai_size,Samurai_sacle,Samurai_offset]
 
-ninja_size = 155
+ninja_size = 200
 ninja_sacle =5
 ninja_offset = [50,110]
 ninja_data = [ninja_size,ninja_sacle,ninja_offset]
@@ -61,8 +61,8 @@ def draw_health_bars(health,x,y):
 
 
 # create 2 instances of the Fighter class
-fighter_1 = Fighter(200, 770,Samurai_data,samurai,samurai_animation)
-fighter_2 = Fighter(1200, 770,ninja_data,ninja,ninja_animation)
+fighter_1 = Fighter(200, 770,False,Samurai_data,samurai,samurai_animation)
+fighter_2 = Fighter(1200, 770,False,ninja_data,ninja,ninja_animation)
 # Set up the game loop
 run = True
 while run:
@@ -75,7 +75,12 @@ while run:
     # move fighters
     fighter_1.move(Screen_Width, Screen_Height, screen, fighter_2)
 
-    fighter_2.move(Screen_Width, Screen_Height, screen, fighter_1)
+
+    #fighter_2.move(Screen_Width, Screen_Height, screen, fighter_1)
+
+    #update fighters
+    fighter_1.update_animation()
+    fighter_2.update_animation()
     # Draw the fighters
     fighter_1.draw(screen)
     fighter_2.draw(screen)
