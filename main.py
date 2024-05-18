@@ -13,6 +13,14 @@ White = (255,255,255)
 Yellow = (255,255,0)
 Red = (255,0,0)
 
+# define game variables
+intro_count =3
+last_count_update = pygame.time.get_ticks()
+score= [0,0]
+round_over = False
+Round_over_cooldown = 5000
+
+
 #define fighter variables
 Samurai_size = 200
 Samurai_sacle =5
@@ -38,9 +46,21 @@ background = pygame.image.load('assets/images/background/background.png').conver
 samurai = pygame.image.load('assets/images/samuraiMack/samurai.png').convert_alpha()
 ninja = pygame.image.load('assets/images/kenji/ninja.png').convert_alpha()
 
+victory_image = pygame.image.load('assets/images/background/victory.png').convert_alpha()
+
+
 
 samurai_animation = [8,8,2,6,6,4,6]
 ninja_animation = [4,8,2,4,4,3,7]
+
+#define font
+count_font = pygame.font.Font("assets/fonts/PressStart2P.ttf", 150)
+score_font = pygame.font.Font("assets/fonts/PressStart2P.ttf", 30)
+
+
+def draw_text(text, font, text_col, x, y):
+    img = font.render(text, True, text_col)
+    screen.blit(img, (x, y))
 
 
 #function for drawing the background
@@ -61,8 +81,8 @@ def draw_health_bars(health,x,y):
 
 
 # create 2 instances of the Fighter class
-fighter_1 = Fighter(1,200, 770,False,Samurai_data,samurai,samurai_animation)
-fighter_2 = Fighter(2,1200, 770,True,ninja_data,ninja,ninja_animation)
+fighter_1 = Fighter(1,200, 640,False,Samurai_data,samurai,samurai_animation)
+fighter_2 = Fighter(2,1200, 640,True,ninja_data,ninja,ninja_animation)
 # Set up the game loop
 run = True
 while run:
@@ -72,11 +92,21 @@ while run:
     #draw health bars
     draw_health_bars(fighter_1.health, 50, 100)
     draw_health_bars(fighter_2.health, 950, 100)
-    # move fighters
-    fighter_1.move(Screen_Width, Screen_Height, screen, fighter_2)
+    #draw the score
+    draw_text('Samurai: ' + str(score[0]), score_font, Red, 100, 50)
+    draw_text('Ninja: ' + str(score[1]), score_font, Red, 1100, 50)
 
+    if intro_count <=0:
+        # move fighters
+        fighter_1.move(Screen_Width, Screen_Height, screen, fighter_2, round_over)
+        fighter_2.move(Screen_Width, Screen_Height, screen, fighter_1, round_over)
+    else:
+        # display count timer
+        draw_text(str(intro_count), count_font, Red, (Screen_Width//2) - 50, (Screen_Height//2) - 50)
+        if (pygame.time.get_ticks() - last_count_update) > 1000:
+            intro_count -= 1
+            last_count_update = pygame.time.get_ticks()
 
-    fighter_2.move(Screen_Width, Screen_Height, screen, fighter_1)
 
     #update fighters
     fighter_1.update_animation()
@@ -84,6 +114,26 @@ while run:
     # Draw the fighters
     fighter_1.draw(screen)
     fighter_2.draw(screen)
+
+    #check for player defeat
+    if round_over == False:
+        if fighter_1.alive == False:
+            score[1] += 1
+            round_over = True
+            round_over_time = pygame.time.get_ticks()
+        if fighter_2.alive == False:
+            score[0] += 1
+            round_over = True
+            round_over_time = pygame.time.get_ticks()
+    else:
+        screen.blit(victory_image, (Screen_Width//2 - 200, 200))
+        if pygame.time.get_ticks() - round_over_time > Round_over_cooldown:
+            fighter_1 = Fighter(1, 200, 640, False, Samurai_data, samurai, samurai_animation)
+            fighter_2 = Fighter(2, 1200, 640, True, ninja_data, ninja, ninja_animation)
+            round_over = False
+            intro_count = 3
+            last_count_update = pygame.time.get_ticks()
+
     # event handler
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

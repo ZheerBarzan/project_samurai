@@ -39,7 +39,7 @@ class Fighter():
         return animation_list
 
 
-    def move(self, Screen_Width, Screen_Height, surface,target):
+    def move(self, Screen_Width, Screen_Height, surface,target, round_over):
         Speed =10
         Gravity = 1
         dx = 0
@@ -51,7 +51,7 @@ class Fighter():
         key = pygame.key.get_pressed()
 
         #can only move if not attacking
-        if self.attacking == False:
+        if self.attacking == False and self.alive == True and round_over == False:
             # check player 1 movement
             if self.player == 1:
             #movement
@@ -67,7 +67,7 @@ class Fighter():
                     self.jump = True
                 #attack
                 if key[pygame.K_s] or key[pygame.K_e]:
-                    self.attack(surface,target)
+                    self.attack(target)
                     #determine which attack is used
                     if key[pygame.K_s]:
                         self.attack_type = 1
@@ -88,7 +88,7 @@ class Fighter():
                     self.jump = True
                 #attack
                 if key[pygame.K_DOWN] or key[pygame.K_RETURN]:
-                    self.attack(surface,target)
+                    self.attack(target)
                     #determine which attack is used
                     if key[pygame.K_DOWN]:
                         self.attack_type = 1
@@ -169,14 +169,13 @@ class Fighter():
                     self.attack_cooldown = 100
                     self.update_action(0)
 
-    def attack(self,surface,target):
+    def attack(self,target):
         if self.attack_cooldown == 0:
             self.attacking = True
             attacking_rect = pygame.Rect(self.rect.centerx -(2 * self.rect.width* self.flip),self.rect.y,2*self.rect.width,self.rect.height)
             if attacking_rect.colliderect(target.rect):
                 target.health -= 10
                 target.hit = True
-            pygame.draw.rect(surface,(0,255,0),attacking_rect)
 
     def update_action(self,new_action):
         if new_action != self.action:
@@ -185,5 +184,4 @@ class Fighter():
             self.update_time = pygame.time.get_ticks()
     def draw(self,surface):
         img = pygame.transform.flip(self.image,self.flip,False)
-        pygame.draw.rect(surface,(255,0,0),self.rect)
         surface.blit(img,(self.rect.x - (self.offset[0]*self.scale),self.rect.y - (self.offset[1]*self.scale)))
