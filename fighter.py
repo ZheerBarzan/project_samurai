@@ -1,5 +1,5 @@
 import pygame
-
+#fighter class
 class Fighter():
     def __init__(self,player,x,y,flip,data,spritesheet,animation_list,sound):
         self.player = player
@@ -25,7 +25,7 @@ class Fighter():
         self.alive = True
 
 
-
+#load images of the fighters
     def load_images(self,spritesheet,animation_steps):
         animation_list = []
         for y,animation in enumerate(animation_steps):
@@ -34,12 +34,11 @@ class Fighter():
             for x in range(animation):
                 temp_img = spritesheet.subsurface(pygame.Rect(x*self.size,y*self.size,self.size,self.size))
                 pygame.transform.scale(temp_img,(self.size*self.scale,self.size*self.scale))
-                temp_img_list.append(pygame.transform.scale(temp_img,(self.size*self.scale,self.size*self.scale))
-)
+                temp_img_list.append(pygame.transform.scale(temp_img,(self.size*self.scale,self.size*self.scale)))
             animation_list.append(temp_img_list)
         return animation_list
 
-
+# a function to move the fighters and check for collisions of the fighters
     def move(self, Screen_Width, Screen_Height, surface,target, round_over):
         Speed =10
         Gravity = 1
@@ -170,6 +169,7 @@ class Fighter():
                     self.attack_cooldown = 100
                     self.update_action(0)
 
+    #function to attack the opponent
     def attack(self,target):
 
         if self.attack_cooldown == 0:
@@ -180,11 +180,14 @@ class Fighter():
                 target.health -= 10
                 target.hit = True
 
+# function to update the action of the fighter
     def update_action(self,new_action):
         if new_action != self.action:
             self.action = new_action
             self.frame_index = 0
             self.update_time = pygame.time.get_ticks()
+
+#function to draw the fighters
     def draw(self,surface):
         img = pygame.transform.flip(self.image,self.flip,False)
         surface.blit(img,(self.rect.x - (self.offset[0]*self.scale),self.rect.y - (self.offset[1]*self.scale)))

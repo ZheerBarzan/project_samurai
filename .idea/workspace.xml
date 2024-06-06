@@ -5,29 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bed2e3b3-291e-497e-a72d-afa4220187e2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/katana.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/music.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/sword.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/kenji/Attack1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/kenji/Attack2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/kenji/Death.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/kenji/Fall.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/kenji/Idle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/kenji/Jump.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/kenji/Run.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/kenji/Take hit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Attack1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Attack2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Death.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Fall.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Idle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Jump.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Run.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Take Hit - white silhouette.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/samuraiMack/Take Hit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fighter.py" beforeDir="false" afterPath="$PROJECT_DIR$/fighter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +58,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-0509580d9d50-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.14494.241" />
+        <option value="bundled-python-sdk-48aec45f0201-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.17011.127" />
       </set>
     </attachedChunks>
   </component>

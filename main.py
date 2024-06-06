@@ -1,3 +1,4 @@
+# neede packages
 import pygame
 from pygame import mixer
 from fighter import Fighter
@@ -24,18 +25,18 @@ Round_over_cooldown = 5000
 
 
 #define fighter variables
+#fighter 1
 Samurai_size = 200
 Samurai_sacle =5
 Samurai_offset = [95,80]
 Samurai_data = [Samurai_size,Samurai_sacle,Samurai_offset]
-
+#fighter 2
 ninja_size = 200
 ninja_sacle =5
 ninja_offset = [85,85]
 ninja_data = [ninja_size,ninja_sacle,ninja_offset]
 
 #load music and sounds
-
 pygame.mixer.music.load('assets/audio/music.mp3')
 pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(-1,0.0,5000)
@@ -44,8 +45,9 @@ katana.set_volume(0.5)
 kunai = pygame.mixer.Sound('assets/audio/sword.wav')
 kunai.set_volume(0.5)
 
-
+# Set up the screen
 screen = pygame.display.set_mode((Screen_Width, Screen_Height))
+#game name
 pygame.display.set_caption("Samurai Showdown")
 
 #set frame rate
@@ -58,11 +60,11 @@ background = pygame.image.load('assets/images/background/background.png').conver
 #load the spritesheets
 samurai = pygame.image.load('assets/images/samuraiMack/samurai.png').convert_alpha()
 ninja = pygame.image.load('assets/images/kenji/ninja.png').convert_alpha()
-
+# load the victory image
 victory_image = pygame.image.load('assets/images/background/victory.png').convert_alpha()
 
 
-
+# define animation frame data
 samurai_animation = [8,8,2,6,6,4,6]
 ninja_animation = [4,8,2,4,4,3,7]
 
@@ -71,6 +73,7 @@ count_font = pygame.font.Font("assets/fonts/PressStart2P.ttf", 150)
 score_font = pygame.font.Font("assets/fonts/PressStart2P.ttf", 30)
 
 
+#function for drawing text
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
@@ -96,6 +99,7 @@ def draw_health_bars(health,x,y):
 # create 2 instances of the Fighter class
 fighter_1 = Fighter(1,200, 640,False,Samurai_data,samurai,samurai_animation,katana)
 fighter_2 = Fighter(2,1200, 640,True,ninja_data,ninja,ninja_animation,kunai)
+
 # Set up the game loop
 run = True
 while run:
@@ -142,12 +146,12 @@ while run:
         screen.blit(victory_image, (Screen_Width//2 - 200, 200))
         if pygame.time.get_ticks() - round_over_time > Round_over_cooldown:
             fighter_1 = Fighter(1, 200, 640, False, Samurai_data, samurai, samurai_animation, katana)
-            fighter_2 = Fighter(2, 1200, 640, True, ninja_data, ninja, ninja_animation, kunai)
+            fighter_2 = Fighter(2, 1200, 640, True, ninja_data, ninja, ninja_animation,kunai)
             round_over = False
             intro_count = 3
             last_count_update = pygame.time.get_ticks()
 
-    # event handler
+    # event handlerdad
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
@@ -155,6 +159,7 @@ while run:
     pygame.display.update()
 
 
+# function to Quit the game
 pygame.quit()
 
 
